@@ -1,6 +1,6 @@
 # Cinematic Hyperframes Motion
 
-[![skills.sh](https://skills.sh/b/quentin-py/cinematic-hyperframes-motion)](https://skills.sh/quentin-py/cinematic-hyperframes-motion)
+[![skills.sh](https://skills.sh/b/quentin-py/cinematic-hyperframes-motion/cinematic-hyperframes-motion)](https://skills.sh/quentin-py/cinematic-hyperframes-motion/cinematic-hyperframes-motion)
 
 A Codex/agent skill for producing cinematic, VFX-friendly Hyperframes and HTML-to-video product films.
 
@@ -8,16 +8,22 @@ It packages the production guidance from a full motion-design iteration cycle in
 
 ## Install
 
-Direct GitHub install, available now:
+Install from GitHub:
 
 ```bash
-npx skills add https://github.com/quentin-py/cinematic-hyperframes-motion
+npx skills add https://github.com/quentin-py/cinematic-hyperframes-motion --skill cinematic-hyperframes-motion
 ```
 
-Registry shorthand, once skills.sh indexes the repo:
+Install through the skills.sh shorthand:
 
 ```bash
-npx skills add quentin-py/cinematic-hyperframes-motion
+npx skills add quentin-py/cinematic-hyperframes-motion --skill cinematic-hyperframes-motion
+```
+
+If your machine has an older global `skills` binary, force the current package:
+
+```bash
+npx -p skills@latest skills add quentin-py/cinematic-hyperframes-motion --skill cinematic-hyperframes-motion
 ```
 
 ## Use When
