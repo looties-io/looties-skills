@@ -1,10 +1,20 @@
 # Cinematic Hyperframes Motion
 
+[![skills.sh](https://skills.sh/b/quentin-py/cinematic-hyperframes-motion)](https://skills.sh/quentin-py/cinematic-hyperframes-motion)
+
 A Codex/agent skill for producing cinematic, VFX-friendly Hyperframes and HTML-to-video product films.
 
 It packages the production guidance from a full motion-design iteration cycle into a reusable skill: Website-to-Video pipeline discipline, Hyperframes catalog dependencies, GSAP composition rules, responsive 16:9/9:16 video design, VFX transitions, kinetic typography, mock UI states, and render validation.
 
 ## Install
+
+Direct GitHub install, available now:
+
+```bash
+npx skills add https://github.com/quentin-py/cinematic-hyperframes-motion
+```
+
+Registry shorthand, once skills.sh indexes the repo:
 
 ```bash
 npx skills add quentin-py/cinematic-hyperframes-motion
