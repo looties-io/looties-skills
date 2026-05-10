@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cinematic Hyperframes Motion"
+  short_description: "Build cinematic, VFX-ready Hyperframes product videos."
+  default_prompt: "Use this skill to plan, animate, validate, and render a cinematic Hyperframes motion design video with strong transitions, UI fidelity, responsive variants, and catalog-backed effects."
