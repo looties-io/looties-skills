@@ -1,50 +1,38 @@
-# Cinematic Hyperframes Motion
+# looties-skills
 
-[![skills.sh](https://skills.sh/b/quentin-py/cinematic-hyperframes-motion/cinematic-hyperframes-motion)](https://skills.sh/quentin-py/cinematic-hyperframes-motion/cinematic-hyperframes-motion)
+Agent skills published by [Looties](https://looties.io) — the neon C2C marketplace for tech swag, conference merch, and rare developer collectibles.
 
-A Codex/agent skill for producing cinematic, VFX-friendly Hyperframes and HTML-to-video product films.
+These are skills we actually use to build Looties. Each skill is a self-contained folder you can install into your Claude Code or Codex workflow.
 
-It packages the production guidance from a full motion-design iteration cycle into a reusable skill: Website-to-Video pipeline discipline, Hyperframes catalog dependencies, GSAP composition rules, responsive 16:9/9:16 video design, VFX transitions, kinetic typography, mock UI states, and render validation.
+## Skills
+
+| Skill | Description |
+|---|---|
+| [cinematic-hyperframes](./cinematic-hyperframes/) | Cinematic, VFX-friendly Hyperframes motion design for HTML-to-video product films |
 
 ## Install
 
-Install from GitHub:
+Via [skills.sh](https://skills.sh):
 
 ```bash
-npx skills add https://github.com/quentin-py/cinematic-hyperframes-motion --skill cinematic-hyperframes-motion
+npx skills.sh install looties-io/looties-skills/cinematic-hyperframes
 ```
 
-Install through the skills.sh shorthand:
+Or clone the collection:
 
 ```bash
-npx skills add quentin-py/cinematic-hyperframes-motion --skill cinematic-hyperframes-motion
+git clone https://github.com/looties-io/looties-skills.git
 ```
 
-If your machine has an older global `skills` binary, force the current package:
+## Adding a skill
 
-```bash
-npx -p skills@latest skills add quentin-py/cinematic-hyperframes-motion --skill cinematic-hyperframes-motion
-```
+Each skill lives in its own subfolder at the root of this repo. The folder must contain at minimum a `SKILL.md` (the workflow guide the agent loads) and a `README.md`. See an existing skill for reference.
 
-## Use When
+## About Looties
 
-- Creating SaaS, ecommerce, app, launch, or brand videos with Hyperframes.
-- Turning a website or product UI into an HTML-to-video motion film.
-- Improving a video that feels too flat, too much like an animated deck, or not cinematic enough.
-- Choosing Hyperframes catalog blocks, shader/CSS transitions, app showcase sections, logo outros, or social follow CTAs.
-- Designing separate 16:9 and 9:16 video variants with accurate mock UI states.
+Looties is the marketplace where developer culture meets resale. Browse rare conference merch, archived launch gear, and developer collectibles.
 
-## What It Includes
-
-- `SKILL.md` - the main workflow and motion-design rules.
-- `references/hyperframes-catalog.md` - Hyperframes dependencies, required docs, catalog blocks, transitions, and validation checklist.
-- `agents/openai.yaml` - optional UI metadata for compatible skill hosts.
-
-## Related Resources
-
-- Hyperframes catalog: https://hyperframes.heygen.com/catalog/
-- Hyperframes docs index: https://hyperframes.mintlify.app/llms.txt
-- Website-to-video guide: https://hyperframes.heygen.com/guides/website-to-video
+→ [looties.io](https://looties.io) · [GitHub org](https://github.com/looties-io) · [Discord](https://discord.gg/A6UcsyCHCb)
 
 ## License
 
