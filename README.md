@@ -1,6 +1,6 @@
 # looties-skills
 
-Agent skills published by [Looties](https://looties.io) — the neon C2C marketplace for tech swag, conference merch, and rare developer collectibles.
+Agent skills published by [Looties](https://looties.io) — the marketplace where developers and tech enthusiasts can buy and sell conference swag, limited-edition merch, and developer gear from the events they love.
 
 These are skills we actually use to build Looties. Each skill is a self-contained folder you can install into your Claude Code or Codex workflow.
 
