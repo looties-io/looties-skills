@@ -17,9 +17,9 @@ These are skills we actually use to build Looties. Each skill is a self-containe
 Via [skills.sh](https://skills.sh):
 
 ```bash
-npx skills.sh install looties-io/looties-skills/cinematic-hyperframes
-npx skills.sh install looties-io/looties-skills/google-ai-seo-fundamentals
-npx skills.sh install looties-io/looties-skills/google-ai-seo-optimization
+npx skills add looties-io/looties-skills --skill cinematic-hyperframes
+npx skills add looties-io/looties-skills --skill google-ai-seo-fundamentals
+npx skills add looties-io/looties-skills --skill google-ai-seo-optimization
 ```
 
 Or clone the collection:
