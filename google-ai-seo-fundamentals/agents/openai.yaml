@@ -1,0 +1,4 @@
+interface:
+  display_name: "Google AI SEO Fundamentals"
+  short_description: "Use AI content safely for Google Search"
+  default_prompt: "Use $google-ai-seo-fundamentals to review AI-assisted content against Google's Search guidance."
