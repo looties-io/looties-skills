@@ -1,0 +1,4 @@
+interface:
+  display_name: "Google AI SEO Optimization"
+  short_description: "Optimize for Google AI Search with SEO"
+  default_prompt: "Use $google-ai-seo-optimization to audit Google AI Search readiness without AI SEO folklore."

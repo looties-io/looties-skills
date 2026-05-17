@@ -9,6 +9,8 @@ These are skills we actually use to build Looties. Each skill is a self-containe
 | Skill | Description |
 |---|---|
 | [cinematic-hyperframes](./cinematic-hyperframes/) | Cinematic, VFX-friendly Hyperframes motion design for HTML-to-video product films |
+| [google-ai-seo-fundamentals](./google-ai-seo-fundamentals/) | Google Search guidance for safe, people-first AI-assisted content |
+| [google-ai-seo-optimization](./google-ai-seo-optimization/) | Google-specific SEO workflow for AI Overviews and AI Mode readiness |
 
 ## Install
 
@@ -16,6 +18,8 @@ Via [skills.sh](https://skills.sh):
 
 ```bash
 npx skills.sh install looties-io/looties-skills/cinematic-hyperframes
+npx skills.sh install looties-io/looties-skills/google-ai-seo-fundamentals
+npx skills.sh install looties-io/looties-skills/google-ai-seo-optimization
 ```
 
 Or clone the collection:
