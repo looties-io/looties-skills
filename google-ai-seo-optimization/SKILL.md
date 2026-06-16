@@ -40,10 +40,16 @@ Read [references/google-ai-optimization-guide.md](references/google-ai-optimizat
 6. Report with guardrails.
    - Separate confirmed issues, likely risks, and optional improvements.
    - Include a short regression check for the site: status, title, canonical, noindex, snippet controls, visible content, structured data, sitemap, and retired/private URL behavior.
+   - Separate optional agent-readable assets from confirmed Google Search blockers.
+
+## Adjacent Non-Google Assets
+
+If the user asks for broader AI agent readiness, inspect files such as `llms.txt`, Markdown mirrors, OKF/Open Knowledge Format bundles, knowledge bundles, `pricing.md`, `ai-index.json`, and entity datasets as optional non-Google assets. Report those findings separately from Google AI Search readiness.
 
 ## Ignore For Google Search
 
 - `llms.txt`, Markdown mirrors, and special AI text files as requirements.
+- OKF/Open Knowledge Format bundles, knowledge bundles, `pricing.md`, `ai-index.json`, and entity datasets as requirements.
 - Chunking content into tiny blocks only for AI systems.
 - Rewriting pages only to target AI systems.
 - Inauthentic third-party mentions.

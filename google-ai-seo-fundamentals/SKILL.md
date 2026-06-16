@@ -37,6 +37,7 @@ Read [references/google-ai-content-guidance.md](references/google-ai-content-gui
    - State whether the content is safe to publish, needs edits, or should not ship.
    - List the highest-risk issues first.
    - Provide exact rewrites or review checklists when useful.
+   - Keep optional agent-readable assets separate from Google Search content quality issues.
 
 ## Do Not Claim
 
@@ -44,3 +45,4 @@ Read [references/google-ai-content-guidance.md](references/google-ai-content-gui
 - Do not claim AI output is acceptable without human review.
 - Do not claim mass AI-generated pages are safe when they lack unique user value.
 - Do not claim special AI schema, `llms.txt`, or Markdown mirrors are required for Google Search.
+- Do not claim OKF/Open Knowledge Format bundles, knowledge bundles, `pricing.md`, or other agent-readable files are required for Google Search.

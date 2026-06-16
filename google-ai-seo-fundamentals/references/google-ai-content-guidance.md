@@ -1,6 +1,6 @@
 # Google AI Content Guidance
 
-Last checked: 2026-05-17
+Last checked: 2026-06-16
 
 Primary source: https://developers.google.com/search/docs/fundamentals/using-gen-ai-content
 
@@ -36,6 +36,14 @@ Structured data must describe what users can see on the page. Do not generate
 ratings, offers, authors, organizations, FAQs, products, prices, availability,
 or image metadata unless those facts are visible, accurate, and supported by the
 page or backend source of truth.
+
+## Agent-Readable Asset Boundary
+
+Files such as `llms.txt`, Markdown mirrors, OKF/Open Knowledge Format bundles,
+knowledge bundles, `pricing.md`, `ai-index.json`, and entity datasets can be
+useful for non-Google agents and direct machine readers. They are not Google
+Search content-quality requirements and should not be presented as shortcuts to
+AI Overviews or AI Mode.
 
 ## Ecommerce AI Content Notes
 

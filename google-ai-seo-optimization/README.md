@@ -10,11 +10,13 @@ Use this skill for audits and implementation work around:
 - JavaScript SEO and rendered content checks
 - structured data accuracy
 - Google AI SEO mythbusting
+- boundary-setting around `llms.txt`, OKF, Markdown mirrors, machine-readable
+  pricing, and other non-Google agent assets
 
 The skill treats AI Search readiness as strong SEO work, not as a separate bag of
 AI-only tricks.
 
-Source checked: 2026-05-17
+Source checked: 2026-06-16
 
 Primary sources:
 - https://developers.google.com/search/docs/fundamentals/ai-optimization-guide

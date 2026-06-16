@@ -1,0 +1,4 @@
+interface:
+  display_name: "Website AI Agent Readiness"
+  short_description: "Prepare sites for AI agents and answer engines"
+  default_prompt: "Use $website-ai-agent-readiness to audit and implement AI-agent-readable website assets without treating them as Google ranking requirements."

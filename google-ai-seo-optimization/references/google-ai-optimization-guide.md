@@ -1,6 +1,6 @@
 # Google AI Search Optimization Guide
 
-Last checked: 2026-05-17
+Last checked: 2026-06-16
 
 Primary sources:
 - https://developers.google.com/search/docs/fundamentals/ai-optimization-guide
@@ -42,9 +42,19 @@ Use structured data where it accurately supports normal rich-result eligibility.
 Google does not require special schema.org types or extra AI-specific markup for
 AI Overviews or AI Mode.
 
+## Agent-Readable Asset Boundary
+
+`llms.txt`, Markdown mirrors, OKF/Open Knowledge Format bundles, knowledge
+bundles, `pricing.md`, `ai-index.json`, and entity datasets can support
+non-Google agents, browser agents, partners, and direct machine readers. They
+are optional adjacent assets, not Google Search requirements or AI Overview/AI
+Mode eligibility criteria.
+
 ## Common Myths To Reject
 
 - `llms.txt` is required for Google AI Search.
+- OKF/Open Knowledge Format bundles are required for Google AI Search.
+- Machine-readable pricing files are required for Google AI Search.
 - Google needs pages chunked into tiny answer blocks to use them.
 - Rewriting text to sound more "AI friendly" is a ranking shortcut.
 - Inauthentic third-party mentions help Google AI Search.

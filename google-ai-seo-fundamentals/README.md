@@ -10,12 +10,17 @@ Use this skill when reviewing AI-generated or AI-assisted:
 - titles, meta descriptions, and alt text
 - structured data
 - scaled-content workflows
+- content that references `llms.txt`, OKF, Markdown mirrors, or other
+  agent-readable files
 
 The skill keeps the focus on helpful, reliable, people-first content and catches
 common failure modes such as hallucinated facts, invented schema, and low-value
 mass generation.
 
-Source checked: 2026-05-17
+It also keeps agent-readable assets in their lane: useful for some non-Google
+agent workflows, but not required for Google Search.
+
+Source checked: 2026-06-16
 
 Primary source:
 https://developers.google.com/search/docs/fundamentals/using-gen-ai-content
