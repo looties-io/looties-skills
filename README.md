@@ -9,6 +9,7 @@ These are skills we actually use to build Looties. Each skill is a self-containe
 | Skill | Description |
 |---|---|
 | [cinematic-hyperframes](./cinematic-hyperframes/) | Cinematic, VFX-friendly Hyperframes motion design for HTML-to-video product films |
+| [code-cleanup](./code-cleanup/) | Safe, behavior-preserving code cleanup for staged or recently changed files |
 | [google-ai-seo-fundamentals](./google-ai-seo-fundamentals/) | Google Search guidance for safe, people-first AI-assisted content |
 | [google-ai-seo-optimization](./google-ai-seo-optimization/) | Google-specific SEO workflow for AI Overviews and AI Mode readiness |
 
@@ -18,6 +19,7 @@ Via [skills.sh](https://skills.sh):
 
 ```bash
 npx skills add looties-io/looties-skills --skill cinematic-hyperframes
+npx skills add looties-io/looties-skills --skill code-cleanup
 npx skills add looties-io/looties-skills --skill google-ai-seo-fundamentals
 npx skills add looties-io/looties-skills --skill google-ai-seo-optimization
 ```

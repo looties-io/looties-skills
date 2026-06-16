@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Cleanup"
+  short_description: "Refactor staged code for clarity safely."
+  default_prompt: "Use $code-cleanup to review my staged changes, suggest safe cleanup batches, preserve behavior, and run the right validation before committing."
