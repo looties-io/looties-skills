@@ -1,0 +1,4 @@
+interface:
+  display_name: "Harness Testing"
+  short_description: "Boot real code into a controlled, mocked environment and assert end-to-end."
+  default_prompt: "Use $harness-testing to design a test harness for this code: find the one interception seam, build a minimal toolkit, boot the real unit without modifying production code, and write a test that asserts end-to-end behavior against mocked services."

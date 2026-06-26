@@ -12,6 +12,7 @@ These are skills we actually use to build Looties. Each skill is a self-containe
 | [code-cleanup](./code-cleanup/) | Safe, behavior-preserving code cleanup for staged or recently changed files |
 | [google-ai-seo-fundamentals](./google-ai-seo-fundamentals/) | Google Search guidance for safe, people-first AI-assisted content |
 | [google-ai-seo-optimization](./google-ai-seo-optimization/) | Google-specific SEO workflow for AI Overviews and AI Mode readiness |
+| [harness-testing](./harness-testing/) | Design harness tests that boot real code into a controlled, mocked environment and assert end-to-end |
 | [website-ai-agent-readiness](./website-ai-agent-readiness/) | Website readiness for AI agents, answer engines, and machine-readable assets |
 
 ## Install
@@ -23,6 +24,7 @@ npx skills@latest add looties-io/looties-skills --skill cinematic-hyperframes
 npx skills@latest add looties-io/looties-skills --skill code-cleanup
 npx skills@latest add looties-io/looties-skills --skill google-ai-seo-fundamentals
 npx skills@latest add looties-io/looties-skills --skill google-ai-seo-optimization
+npx skills@latest add looties-io/looties-skills --skill harness-testing
 npx skills@latest add looties-io/looties-skills --skill website-ai-agent-readiness
 ```
 
