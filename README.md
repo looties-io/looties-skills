@@ -8,6 +8,7 @@ These are skills we actually use to build Looties. Each skill is a self-containe
 
 | Skill | Description |
 |---|---|
+| [changelog-to-video](./changelog-to-video/) | Turn a changelog into a feature-showcase video where every feature gets a real mock-up (asset waterfall), not a generic card |
 | [cinematic-hyperframes](./cinematic-hyperframes/) | Cinematic, VFX-friendly Hyperframes motion design for HTML-to-video product films |
 | [code-cleanup](./code-cleanup/) | Safe, behavior-preserving code cleanup for staged or recently changed files |
 | [google-ai-seo-fundamentals](./google-ai-seo-fundamentals/) | Google Search guidance for safe, people-first AI-assisted content |
@@ -20,6 +21,7 @@ These are skills we actually use to build Looties. Each skill is a self-containe
 Via [skills.sh](https://skills.sh):
 
 ```bash
+npx skills@latest add looties-io/looties-skills --skill changelog-to-video
 npx skills@latest add looties-io/looties-skills --skill cinematic-hyperframes
 npx skills@latest add looties-io/looties-skills --skill code-cleanup
 npx skills@latest add looties-io/looties-skills --skill google-ai-seo-fundamentals
