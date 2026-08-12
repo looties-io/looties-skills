@@ -1,0 +1,4 @@
+interface:
+  display_name: "Endpoint Surface Map"
+  short_description: "Know who can actually call each endpoint, and gate on it."
+  default_prompt: "Use $endpoint-surface-map to audit our endpoints: enumerate every route, classify caller, credential and authority, write a versioned manifest with a CI gate that fails on undeclared endpoints, check the deployed config against it, and hunt the five recurring shapes."

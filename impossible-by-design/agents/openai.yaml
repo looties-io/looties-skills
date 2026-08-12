@@ -1,0 +1,4 @@
+interface:
+  display_name: "Impossible by Design"
+  short_description: "Turn a convention into a constraint so the wrong path stops being buildable."
+  default_prompt: "Use $impossible-by-design on this recurring bug: name the rung the rule sits on, move it up the ladder until the wrong path fails at build, boot or construction time, and write the test that attempts the wrong path and asserts it fails."

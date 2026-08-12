@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ground Truth"
+  short_description: "Confirm a finding against the running system before acting on it."
+  default_prompt: "Use $ground-truth to confirm this finding against production: is it happening, since when, and how far does it reach. Stay read-only, cross-check the scheduler credential against the handler guard, look for missing effects rather than errors, and re-score severity on the evidence."

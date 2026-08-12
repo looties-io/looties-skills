@@ -1,0 +1,4 @@
+interface:
+  display_name: "Legacy Code Review"
+  short_description: "Test unread code without freezing its defects into the suite."
+  default_prompt: "Use $legacy-code-review on this code: build the caller map first, derive every assertion from the schema, migrations and callers rather than from the code under test, report disagreements instead of asserting them, and hand back an inventory with an intent source per finding."
