@@ -4,18 +4,18 @@
     {
       "id": 1,
       "prompt": "Run a web accessibility check on the app — keyboard navigation and focus management especially. Report only, don't change anything yet.",
-      "expected_output": "A dated audit record in docs/records/ with a per-lens scorecard, file:line-evidenced findings mapped to WCAG SCs, ready-to-apply snippets, and a quarantined design-decision section. No source changes.",
+      "expected_output": "A dated audit record in the project's records location, with a per-lens scorecard, file:line-evidenced findings mapped to WCAG SCs, ready-to-apply snippets, and a quarantined design-decision section. No source changes.",
       "files": []
     },
     {
       "id": 2,
-      "prompt": "The new seller analytics page at src/pages/SellerAnalytics.tsx needs an a11y pass before launch — audit it and apply whatever fixes won't change the visuals.",
-      "expected_output": "Scoped audit of the one page; additive fixes applied using repo primitives (headings, labels, focus-visible variants, useModalA11y if it has modals); the page added to the e2e PAGES list; npm run verify green; visible changes listed for design sign-off rather than applied.",
+      "prompt": "The new analytics page at src/pages/Analytics.tsx needs an a11y pass before launch — audit it and apply whatever fixes won't change the visuals.",
+      "expected_output": "Scoped audit of the one page; additive fixes applied using the project's existing primitives (headings, labels, focus-visible variants, the shared modal hook if it has modals); the page added to the e2e scan list; the project's verify command green; visible changes listed for design sign-off rather than applied.",
       "files": []
     },
     {
       "id": 3,
-      "prompt": "a buyer emailed saying they literally cannot pick an address suggestion in checkout without a mouse. can you look into it and fix",
+      "prompt": "a user emailed saying they literally cannot pick an address suggestion in checkout without a mouse. can you look into it and fix",
       "expected_output": "Diagnoses the keyboard dead-end in the checkout autocomplete, applies the combobox keyboard pattern (arrows/Enter/Escape + ARIA + roving highlight) per fix-patterns.md, ships a unit test, verify green.",
       "files": []
     }

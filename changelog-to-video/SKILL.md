@@ -70,6 +70,13 @@ A scene archetype maps structured slots → a `.mock` illustration. A useful set
 - **Non-deterministic motion:** filter/random/time-based animation breaks reproducible rendering.
 - **Capturing logged-in pages first:** start with public routes only; authenticated capture is a separate, heavier concern (seeded test account + secrets).
 
-## Reference implementation
+## Reference architecture
 
-Looties' `looties-changelog-video/`: HyperFrames + GSAP, with `archetypes.py` (asset-grid / product-card / flow / …), `registry.py` (the reuse rung), `capture.py` (the public-route Playwright waterfall), and `build_video.py` (renders asset archetypes; emits a card only when the plan says so). A render-only CI workflow performs the capture + render at `contents: read` (least privilege).
+A working implementation separates into four modules, whichever language you build it in:
+
+- **archetypes**: one renderer per archetype (asset-grid, product-card, flow, and so on), so the router can only route to something that exists.
+- **registry**: the reuse rung, a small committed index mapping feature to a previously approved mock-up.
+- **capture**: the public-route Playwright waterfall, where a failure downgrades one rung rather than crashing the render.
+- **build**: composes the resolved plan into scenes, emitting the generic card only when the plan explicitly says so.
+
+Pair it with an HTML-to-video engine (HyperFrames or Remotion) plus GSAP for motion. Run capture and render in a render-only CI job with read-only repository permissions, since the pipeline needs no write access.

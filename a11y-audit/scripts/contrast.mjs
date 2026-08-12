@@ -1,16 +1,27 @@
 #!/usr/bin/env node
-// WCAG 2.x contrast calculator for the Looties palette.
+// WCAG 2.x contrast calculator for a Tailwind palette.
 //
-// Default (run from repo root): loads colors.neon from ./tailwind.config.js and sweeps
-// the standard combinations (text on the three dark surfaces, dark-on-neon and
-// white-on-neon button fills, non-text borders/rings).
+// Ad-hoc mode works anywhere, with no config and no project:
 //
-//   node .claude/skills/a11y-audit/scripts/contrast.mjs
-//   node .claude/skills/a11y-audit/scripts/contrast.mjs --pair '#94A3B8,#334155' [--pair …]
-//   node .claude/skills/a11y-audit/scripts/contrast.mjs --config path/to/tailwind.config.js
+//   node scripts/contrast.mjs --pair '#94A3B8,#334155' [--pair …]
 //
-// AA: ≥4.5 normal text, ≥3.0 large text (≥24px, or ≥18.66px bold) and non-text UI.
-// AAA: ≥7.0 / ≥4.5.
+// Sweep mode reads your Tailwind config and grades every brand color against a set of
+// surface colors, in the four combinations that actually matter: text on surfaces,
+// dark text on brand fills, white text on brand fills, and brand borders/rings on the
+// page background (non-text, SC 1.4.11).
+//
+//   node scripts/contrast.mjs
+//   node scripts/contrast.mjs --config path/to/tailwind.config.js
+//   node scripts/contrast.mjs --palette brand          # a single group under theme.extend.colors
+//   node scripts/contrast.mjs --surfaces '#020617,#0F172A,#1E293B'
+//
+// By default it sweeps every flat color group under theme.extend.colors, and grades
+// against the Tailwind slate scale as a stand-in dark surface ladder. Pass --surfaces
+// with your own values (darkest first) if your app is light-themed or uses custom
+// surfaces; the first surface is treated as the page background.
+//
+// AA: >=4.5 normal text, >=3.0 large text (>=24px, or >=18.66px bold) and non-text UI.
+// AAA: >=7.0 / >=4.5.
 
 import { pathToFileURL } from 'node:url';
 import { resolve } from 'node:path';
@@ -29,9 +40,10 @@ const ratio = (a, b) => {
   return (l1 + 0.05) / (l2 + 0.05);
 };
 const grade = (r) => (r >= 7 ? 'AAA' : r >= 4.5 ? 'AA' : r >= 3 ? 'AA-large/UI only' : 'FAIL');
-const row = (name, r) => console.log(`${name.padEnd(16)} ${r.toFixed(2).padStart(6)}  ${grade(r)}`);
+const row = (name, r) => console.log(`${name.padEnd(20)} ${r.toFixed(2).padStart(6)}  ${grade(r)}`);
+const isHex = (v) => typeof v === 'string' && /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(v);
 
-// Tailwind default slate scale (the config does not override slate — verify if that changes).
+// Tailwind's default slate scale, used as a neutral stand-in when --surfaces is absent.
 const SLATE = {
   'slate-200': '#E2E8F0', 'slate-300': '#CBD5E1', 'slate-400': '#94A3B8',
   'slate-500': '#64748B', 'slate-600': '#475569', 'slate-700': '#334155',
@@ -41,9 +53,13 @@ const SLATE = {
 const args = process.argv.slice(2);
 const pairs = [];
 let configPath = './tailwind.config.js';
+let paletteKey = null;
+let surfaceArg = null;
 for (let i = 0; i < args.length; i++) {
   if (args[i] === '--pair') pairs.push(args[++i]);
   else if (args[i] === '--config') configPath = args[++i];
+  else if (args[i] === '--palette') paletteKey = args[++i];
+  else if (args[i] === '--surfaces') surfaceArg = args[++i];
 }
 
 if (pairs.length > 0) {
@@ -56,27 +72,49 @@ if (pairs.length > 0) {
 }
 
 const config = (await import(pathToFileURL(resolve(configPath)).href)).default;
-const neon = config?.theme?.extend?.colors?.neon;
-if (!neon) {
-  console.error(`No theme.extend.colors.neon found in ${configPath}`);
+const groups = config?.theme?.extend?.colors ?? {};
+
+// Collect brand colors as `group-shade` pairs, keeping only flat hex maps. A palette
+// key narrows the sweep to one group; without it, every eligible group is included.
+const brand = {};
+for (const [group, value] of Object.entries(groups)) {
+  if (paletteKey && group !== paletteKey) continue;
+  if (isHex(value)) { brand[group] = value; continue; }
+  if (value && typeof value === 'object') {
+    for (const [shade, c] of Object.entries(value)) {
+      if (isHex(c)) brand[`${group}-${shade}`] = c;
+    }
+  }
+}
+
+if (Object.keys(brand).length === 0) {
+  console.error(
+    `No hex colors found under theme.extend.colors${paletteKey ? `.${paletteKey}` : ''} in ${configPath}.\n` +
+      `Use --palette <key> to name a group, or --pair '#fg,#bg' to grade colors directly.`,
+  );
   process.exit(1);
 }
+
+const surfaces = surfaceArg
+  ? Object.fromEntries(surfaceArg.split(',').map((s, i) => [i === 0 ? `page bg (${s.trim()})` : s.trim(), s.trim()]))
+  : {
+      'page bg (slate-950)': SLATE['slate-950'],
+      'surface (slate-900)': SLATE['slate-900'],
+      'card (slate-800)': SLATE['slate-800'],
+      'raised (slate-700)': SLATE['slate-700'],
+    };
+const pageBg = Object.values(surfaces)[0];
+const darkest = surfaceArg ? pageBg : SLATE['slate-950'];
 
 const TEXT = {
   white: '#FFFFFF',
   'slate-200': SLATE['slate-200'], 'slate-300': SLATE['slate-300'],
   'slate-400': SLATE['slate-400'], 'slate-500': SLATE['slate-500'],
   'slate-600': SLATE['slate-600'],
-  ...Object.fromEntries(Object.entries(neon).map(([k, v]) => [`neon-${k}`, v])),
-};
-const BG = {
-  'page bg (slate-950)': SLATE['slate-950'],
-  'surface (slate-900)': SLATE['slate-900'],
-  'card (slate-800)': SLATE['slate-800'],
-  'raised (slate-700)': SLATE['slate-700'],
+  ...brand,
 };
 
-for (const [bgName, bg] of Object.entries(BG)) {
+for (const [bgName, bg] of Object.entries(surfaces)) {
   console.log(`\n== text on ${bgName} ==`);
   Object.entries(TEXT)
     .map(([name, c]) => [name, ratio(c, bg)])
@@ -84,14 +122,14 @@ for (const [bgName, bg] of Object.entries(BG)) {
     .forEach(([name, r]) => row(name, r));
 }
 
-console.log('\n== dark text (slate-950) on neon fills — the house convention ==');
-for (const [name, c] of Object.entries(neon)) row(`neon-${name}`, ratio(SLATE['slate-950'], c));
+console.log(`\n== dark text (${darkest}) on brand fills ==`);
+for (const [name, c] of Object.entries(brand)) row(name, ratio(darkest, c));
 
-console.log('\n== white text on neon fills — avoid ==');
-for (const [name, c] of Object.entries(neon)) row(`neon-${name}`, ratio('#FFFFFF', c));
+console.log('\n== white text on brand fills ==');
+for (const [name, c] of Object.entries(brand)) row(name, ratio('#FFFFFF', c));
 
-console.log('\n== non-text (SC 1.4.11, needs 3.0): neon borders/rings on page bg ==');
-for (const [name, c] of Object.entries(neon)) {
-  const r = ratio(c, SLATE['slate-950']);
-  console.log(`neon-${name}`.padEnd(16) + ` ${r.toFixed(2).padStart(6)}  ${r >= 3 ? 'ok' : 'FAIL'}`);
+console.log('\n== non-text (SC 1.4.11, needs 3.0): brand borders/rings on page bg ==');
+for (const [name, c] of Object.entries(brand)) {
+  const r = ratio(c, pageBg);
+  console.log(name.padEnd(20) + ` ${r.toFixed(2).padStart(6)}  ${r >= 3 ? 'ok' : 'FAIL'}`);
 }

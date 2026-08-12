@@ -1,12 +1,14 @@
 # Non-breaking fix cookbook
 
-Adoption snippets for the repo's a11y primitives. Every pattern here passed the
-"sighted mouse user sees nothing different" test in the 2026-07-15 baseline pass.
-When implementing, ship unit tests alongside (`src/__tests__/` — see the existing
-`useModalA11y.test.tsx`, `ScrollToTop.test.tsx`, `PlacesAutocomplete.keyboard.test.tsx`
-for the harness patterns, including the jsdom `offsetParent` and `matchMedia` shims).
+Adoption snippets for shared a11y primitives. Every pattern here passes the "sighted mouse
+user sees nothing different" test. When implementing, ship unit tests alongside; a jsdom
+environment usually needs `offsetParent` and `matchMedia` shims for focus and
+reduced-motion assertions.
 
-## Modal → useModalA11y
+Names like `useModalA11y`, `SkipLink` and `ScrollToTop` below stand for the primitives in
+your own codebase. Substitute yours, or build them once if they do not exist.
+
+## Modal: the shared focus hook
 
 Hooks must run before the `if (!isOpen) return null` early return:
 
@@ -28,12 +30,12 @@ const dialogRef = useModalA11y(isOpen, onClose);   // before the early return
   <h2 id="my-modal-title">…</h2>
 ```
 
-Backdrop (especially when portaled — React events bubble through the React tree, so a
-backdrop click would otherwise reach the host card's onClick):
+Backdrop, especially when portaled, since React events bubble through the React tree and a
+backdrop click would otherwise reach the host card's onClick:
 
 ```tsx
 <div
-  role="presentation"                    // backdrop only — NEVER on the panel
+  role="presentation"                    // backdrop only, NEVER on the panel
   onClick={(e) => {
     e.stopPropagation();
     if (e.target === e.currentTarget) onClose();
@@ -41,20 +43,20 @@ backdrop click would otherwise reach the host card's onClick):
 >
 ```
 
-Remove any hand-rolled Escape handlers / scroll locks the modal had — the hook owns
-them, and hand-rolled locks that reset to `'unset'` clobber the previous overflow value.
+Remove any hand-rolled Escape handlers and scroll locks the modal had. The hook owns them,
+and hand-rolled locks that reset overflow to `'unset'` clobber the previous value.
 
-## Skip link + main target (already wired in App.tsx — pattern for reference)
+## Skip link and main target
 
 ```tsx
 <SkipLink />                                          // first child of the root div
 <main id="main-content" tabIndex={-1} className="focus:outline-none">
 ```
 
-`SkipLink` is `sr-only focus:not-sr-only …` and focuses the target in `onClick`
+The link is `sr-only focus:not-sr-only …` and must focus the target in `onClick`
 explicitly, because browsers disagree on focusing fragment targets (Safari never does).
 
-## Heading fixes — pixel-identical
+## Heading fixes: pixel-identical
 
 Tailwind Preflight unstyles headings, so a tag swap with unchanged classes renders
 identically:
@@ -64,15 +66,15 @@ identically:
 <h2 className="text-2xl font-bold …">…</h2>     <h1 className="text-2xl font-bold …">…</h1>
 ```
 
-Pages with no heading at all get an invisible one (translate it — check the page's
-namespace for an existing `page_title` key before adding new ones):
+Pages with no heading at all get an invisible one. Translate it, and check the page's
+namespace for an existing title key before adding a new one:
 
 ```tsx
 <h1 className="sr-only">{t('page_title')}</h1>
 ```
 
-Multi-`h1` files whose h1s live in mutually exclusive early-return branches are
-CORRECT — one h1 per rendered state. Don't "fix" them.
+Multi-`h1` files whose h1s live in mutually exclusive early-return branches are CORRECT,
+because that is one h1 per rendered state. Do not "fix" them.
 
 ## Hover-revealed controls
 
@@ -83,15 +85,14 @@ className="opacity-0 group-hover:opacity-100 focus-visible:opacity-100 …"
 className="opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 …"
 ```
 
-`focus-visible:` is keyboard-only for buttons/links — safe. For text inputs it also
-matches on mouse click — NOT non-breaking; quarantine those.
+`focus-visible:` is keyboard-only for buttons and links, so it is safe. For text inputs it
+also matches on mouse click, so it is not non-breaking. Quarantine those.
 
-## Combobox / autocomplete keyboard pattern
+## Combobox and autocomplete keyboard pattern
 
-Copy from `src/components/checkout/PlacesAutocomplete.tsx`: roving `activeIndex` state
-reset on `[suggestions, isOpen]`; input `onKeyDown` handles ArrowDown/ArrowUp
-(`e.preventDefault()`), Enter (`preventDefault` so the surrounding form doesn't
-submit, then select), Escape (close). ARIA wiring:
+Roving `activeIndex` state reset on `[suggestions, isOpen]`; input `onKeyDown` handles
+ArrowDown and ArrowUp (with `e.preventDefault()`), Enter (`preventDefault` first so the
+surrounding form does not submit, then select), and Escape (close). ARIA wiring:
 
 ```tsx
 // input
@@ -100,7 +101,7 @@ aria-expanded={open} aria-controls={open ? 'listbox-id' : undefined}
 aria-activedescendant={open && activeIndex >= 0 ? `option-${activeIndex}` : undefined}
 // list
 <ul id="listbox-id" role="listbox" aria-label={…}>
-// options — keep onMouseDown for mouse users; highlight matches the hover style
+// options: keep onMouseDown for mouse users; the highlight matches the hover style
 <li id={`option-${i}`} role="option" aria-selected={i === activeIndex}
     className={`… hover:bg-slate-700 ${i === activeIndex ? 'bg-slate-700' : ''}`}>
 ```
@@ -108,30 +109,29 @@ aria-activedescendant={open && activeIndex >= 0 ? `option-${activeIndex}` : unde
 ## Landmark labels
 
 ```tsx
-<nav aria-label={t('primary_nav_label')}>              // i18n; no "navigation" in label
+<nav aria-label={t('primary_nav_label')}>              // translated; no "navigation" in label
 <nav aria-labelledby="footer-discover-heading">        // when a visible heading exists
 <h3 id="footer-discover-heading">Discover</h3>
 <div role="region" aria-label="Announcement">          // banners outside landmarks
 ```
 
-Add label keys to BOTH `src/i18n/locales/en/*.json` and `fr/*.json` — the locale-parity
-test fails otherwise.
+Add label keys to every locale the project ships, or a locale-parity test will fail.
 
-## Route-change focus (pattern lives in ScrollToTop.tsx)
+## Route-change focus
 
-Skip the first paint (an `isInitialLoad` ref), `focus({ preventScroll: true })` on the
-main element, and gate smooth scrolling on
-`matchMedia('(prefers-reduced-motion: reduce)')` — CSS reduced-motion rules do not
+Skip the first paint with an `isInitialLoad` ref, call `focus({ preventScroll: true })` on
+the main element, and gate smooth scrolling on
+`matchMedia('(prefers-reduced-motion: reduce)')`, because CSS reduced-motion rules do not
 affect JS-initiated smooth scroll.
 
 ## In-text links
 
 ```tsx
-// in prose — SC 1.4.1; hover-only underline relies on color alone
-className="text-neon-cyan underline underline-offset-2"
+// in prose: SC 1.4.1, since a hover-only underline relies on color alone
+className="<your-link-color> underline underline-offset-2"
 ```
 
-Freestanding data links (tracking numbers in order cards, nav links) are exempt.
+Freestanding data links, such as tracking numbers in order cards or nav links, are exempt.
 
 ## Loading states
 
@@ -142,13 +142,14 @@ Freestanding data links (tracking numbers in order cards, nav links) are exempt.
 </div>
 ```
 
-## Escalation guardrails (jsx-a11y at error severity)
+## Escalation guardrails
 
-The escalated rules will block some naive fixes — the sanctioned resolutions:
+Once accessibility lint rules are at error severity they will block some naive fixes. The
+sanctioned resolutions:
 
-- `interactive-supports-focus` on a `role="menu"` div with onKeyDown → add `tabIndex={-1}`.
-- `click-events-have-key-events` / `no-noninteractive-element-interactions` on a dialog
-  panel's click-guard → remove the panel handler; use the backdrop
+- `interactive-supports-focus` on a `role="menu"` div with onKeyDown: add `tabIndex={-1}`.
+- `click-events-have-key-events` or `no-noninteractive-element-interactions` on a dialog
+  panel's click-guard: remove the panel handler and use the backdrop
   `target === currentTarget` pattern above instead.
-- Never resolve a rule by adding `role="presentation"` to something semantic, disabling
-  the rule, or `eslint-disable` comments.
+- Never resolve a rule by adding `role="presentation"` to something semantic, by disabling
+  the rule, or with an inline disable comment.

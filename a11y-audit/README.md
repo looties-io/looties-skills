@@ -7,19 +7,22 @@ into a **non-breaking bucket** (additive, invisible to sighted mouse users — s
 and a **design-gated bucket** (anything visible, quarantined with measured contrast
 ratios so the design decision is informed).
 
-Born from a full audit-and-fix pass on [looties.io](https://looties.io): one afternoon
-took the app from zero focus management to a verified modal focus contract, skip link,
-keyboard-operable checkout autocomplete, labeled landmarks, and an axe e2e gate that
-blocks regressions — with pixel-identical UI.
+Born from a full audit-and-fix pass on a production app: one afternoon took it from zero
+focus management to a verified modal focus contract, a skip link, a keyboard-operable
+checkout autocomplete, labeled landmarks, and an axe e2e gate that blocks regressions,
+with pixel-identical UI.
+
+Part of [looties-skills](https://github.com/looties-io/looties-skills), open-source agent
+skills by [Looties](https://looties.io).
 
 ## What it gives you
 
 - A four-lens audit method (keyboard / focus / content / landmarks) with per-lens
   checklists, grep patterns, and WCAG success-criterion mapping.
-- Three objective instruments so findings are measured, not vibes: an ESLint
-  `jsx-a11y` ground-truth run, a WCAG contrast calculator that reads your Tailwind
-  config (`scripts/contrast.mjs`), and an axe e2e gate — including the trap where a
-  "passing" axe suite silently scans an unmounted SPA shell.
+- Three objective instruments so findings are measured, not vibes: an accessibility lint
+  run, a WCAG contrast calculator that reads your own Tailwind config
+  (`scripts/contrast.mjs`), and an axe e2e gate — including the trap where a "passing"
+  axe suite silently scans an unmounted SPA shell.
 - The **"truly additive" test** for what ships without design sign-off (sr-only markup,
   ARIA, same-class tag swaps, `focus-visible:` on buttons — but *not* on text inputs,
   which match `:focus-visible` on mouse click).
@@ -28,9 +31,11 @@ blocks regressions — with pixel-identical UI.
 - Pitfalls that actually happened, not hypotheticals ("lint-clean ≠ accessible",
   "`aria-modal` doesn't trap focus").
 
-Written against the Looties codebase — the primitives it names are ours, but the
-method, checklists, instruments, and cookbook patterns port to any React + Tailwind
-app: swap the primitive paths for your own.
+Written for React and Tailwind. The skill opens by locating the five a11y primitives it
+depends on in *your* codebase (modal contract, skip link, route-change focus, combobox
+pattern, in-text link style), and treats any that is missing as a finding in its own
+right. The method, checklists, instruments and cookbook patterns port to any
+component-based frontend.
 
 ## Install
 
