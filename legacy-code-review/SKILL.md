@@ -1,6 +1,10 @@
 ---
 name: legacy-code-review
-description: Use when reviewing, testing or taking ownership of code nobody has looked at in a long time, especially untested code and code an AI agent generated and then left. Covers scoping a cohort, building the caller map, adding first coverage to code that has never been executed without freezing its defects into assertions, inventorying findings with evidence, and adversarially verifying that the new tests actually hold. Use when asked to "review this legacy code", "add tests to this old module", "audit the code we inherited", "clean up AI-generated code", "we have no tests on this", "write characterization tests", or when a codebase has grown faster than anyone has read it.
+description: "Use when reviewing, testing or taking ownership of code nobody has looked at in a long time, especially untested code and code an AI agent generated and then left. Covers scoping a cohort, building the caller map, adding first coverage to code that has never been executed without freezing its defects into assertions, inventorying findings with evidence, and adversarially verifying that the new tests actually hold. Use when asked to \"review this legacy code\", \"add tests to this old module\", \"audit the code we inherited\", \"clean up AI-generated code\", \"we have no tests on this\", \"write characterization tests\", or when a codebase has grown faster than anyone has read it."
+license: MIT
+metadata:
+  author: Looties
+  version: "1.0.0"
 ---
 
 # Legacy Code Review

@@ -1,6 +1,10 @@
 ---
 name: google-ai-seo-optimization
-description: Google-specific SEO workflow for AI Overviews and AI Mode readiness. Use when auditing or optimizing a site for generative AI features on Google Search, including crawlability, indexability, snippet eligibility, Googlebot access, JavaScript SEO, structured data accuracy, Search Console checks, and mythbusting AEO/GEO tactics.
+description: "Google-specific SEO workflow for AI Overviews and AI Mode readiness. Use when auditing or optimizing a site for generative AI features on Google Search, including crawlability, indexability, snippet eligibility, Googlebot access, JavaScript SEO, structured data accuracy, Search Console checks, and mythbusting AEO/GEO tactics."
+license: MIT
+metadata:
+  author: Looties
+  version: "1.0.0"
 ---
 
 # Google AI SEO Optimization

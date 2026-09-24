@@ -1,6 +1,10 @@
 ---
 name: cinematic-hyperframes
-description: Cinematic motion design workflow for Hyperframes/Hyperframer and HTML-to-video product films. Use when creating or revising SaaS, app, ecommerce, launch, social, or brand videos that need the /website-to-hyperframes or Website-to-Video pipeline, Hyperframes compositions, catalog-backed blocks/components/transitions, GSAP timelines, VFX-friendly motion, kinetic typography, responsive 16:9/9:16 variants, mock UI states, and export validation.
+description: "Cinematic motion design workflow for Hyperframes/Hyperframer and HTML-to-video product films. Use when creating or revising SaaS, app, ecommerce, launch, social, or brand videos that need the /website-to-hyperframes or Website-to-Video pipeline, Hyperframes compositions, catalog-backed blocks/components/transitions, GSAP timelines, VFX-friendly motion, kinetic typography, responsive 16:9/9:16 variants, mock UI states, and export validation."
+license: MIT
+metadata:
+  author: Looties
+  version: "1.0.0"
 ---
 
 # Cinematic Hyperframes Motion

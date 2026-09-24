@@ -1,6 +1,10 @@
 ---
 name: ground-truth
-description: Use when a finding from code reading, static analysis, an audit or an LLM review needs to be confirmed against the running system before anyone acts on it. Covers proving whether a suspected bug is actually happening, since when, and how far it reaches; validating a destructive schema or config change inside a transaction that is rolled back; catching deployed-versus-repository config drift; and diagnosing scheduled jobs that report success while doing nothing. Use when asked "is this actually happening", "is this a real problem or a theoretical one", "why did the cron not run", "the job says it succeeded", "check production", "how long has this been broken", or when triaging an audit whose severities are guesses.
+description: "Use when a finding from code reading, static analysis, an audit or an LLM review needs to be confirmed against the running system before anyone acts on it. Covers proving whether a suspected bug is actually happening, since when, and how far it reaches; validating a destructive schema or config change inside a transaction that is rolled back; catching deployed-versus-repository config drift; and diagnosing scheduled jobs that report success while doing nothing. Use when asked \"is this actually happening\", \"is this a real problem or a theoretical one\", \"why did the cron not run\", \"the job says it succeeded\", \"check production\", \"how long has this been broken\", or when triaging an audit whose severities are guesses."
+license: MIT
+metadata:
+  author: Looties
+  version: "1.0.0"
 ---
 
 # Ground Truth

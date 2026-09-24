@@ -1,6 +1,10 @@
 ---
 name: harness-testing
-description: Use when writing, designing, or strengthening harness tests — tests that boot a larger unit of a system (an HTTP handler, a job, a UI flow) into a realistic but controlled environment (fake requests, mocked services/APIs, controlled env vars, an in-memory/seeded database, fake timers) and assert end-to-end behavior. Use when asked to "test the whole handler", "integration test without a real DB/network", "mock the services and run the real code path", "add a test harness", or to improve reliability of code that only misbehaves when wired to its dependencies. Framework-agnostic; includes notes for TypeScript/Deno/Node, Python, and Go.
+description: "Use when writing, designing, or strengthening harness tests \u2014 tests that boot a larger unit of a system (an HTTP handler, a job, a UI flow) into a realistic but controlled environment (fake requests, mocked services/APIs, controlled env vars, an in-memory/seeded database, fake timers) and assert end-to-end behavior. Use when asked to \"test the whole handler\", \"integration test without a real DB/network\", \"mock the services and run the real code path\", \"add a test harness\", or to improve reliability of code that only misbehaves when wired to its dependencies. Framework-agnostic; includes notes for TypeScript/Deno/Node, Python, and Go."
+license: MIT
+metadata:
+  author: Looties
+  version: "1.0.0"
 ---
 
 # Harness Testing

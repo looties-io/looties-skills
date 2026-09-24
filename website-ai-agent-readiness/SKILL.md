@@ -1,6 +1,10 @@
 ---
 name: website-ai-agent-readiness
-description: Audit or implement website readiness for AI agents and answer engines, including llms.txt, llms-full.txt, index.md, OKF/Open Knowledge Format bundles, machine-readable pricing files, ai-index.json, sitemap.xml, robots.txt, schema alignment, static asset headers, and SEO smoke tests. Use when the user mentions AI agent readiness, agent-readable site, llms.txt, OKF, Open Knowledge Format, knowledge bundle, AI-search readiness, answer engine readiness, machine-readable pricing, or agent-readable website assets.
+description: "Audit or implement website readiness for AI agents and answer engines, including llms.txt, llms-full.txt, index.md, OKF/Open Knowledge Format bundles, machine-readable pricing files, ai-index.json, sitemap.xml, robots.txt, schema alignment, static asset headers, and SEO smoke tests. Use when the user mentions AI agent readiness, agent-readable site, llms.txt, OKF, Open Knowledge Format, knowledge bundle, AI-search readiness, answer engine readiness, machine-readable pricing, or agent-readable website assets."
+license: MIT
+metadata:
+  author: Looties
+  version: "1.0.0"
 ---
 
 # Website AI Agent Readiness

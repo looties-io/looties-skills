@@ -1,6 +1,10 @@
 ---
 name: a11y-audit
-description: Audit and fix web accessibility (WCAG 2.1 AA) in a web app, covering keyboard navigation, focus management, screen-reader semantics (landmarks, headings, ARIA), and color contrast, then implement the non-breaking fixes using shared a11y primitives instead of hand-rolled ones. Use whenever the user mentions accessibility, a11y, WCAG, screen readers, keyboard navigation, focus management, contrast, ARIA, or skip links; and also when they describe a symptom without naming accessibility ("can't use checkout with a keyboard", "focus gets lost when the modal closes", "this text is hard to read"). Applies to a single component as much as a full-app audit.
+description: "Audit and fix web accessibility (WCAG 2.1 AA) in a web app, covering keyboard navigation, focus management, screen-reader semantics (landmarks, headings, ARIA), and color contrast, then implement the non-breaking fixes using shared a11y primitives instead of hand-rolled ones. Use whenever the user mentions accessibility, a11y, WCAG, screen readers, keyboard navigation, focus management, contrast, ARIA, or skip links; and also when they describe a symptom without naming accessibility (\"can't use checkout with a keyboard\", \"focus gets lost when the modal closes\", \"this text is hard to read\"). Applies to a single component as much as a full-app audit."
+license: MIT
+metadata:
+  author: Looties
+  version: "1.0.0"
 ---
 
 # Web Accessibility Audit and Non-Breaking Fix Pass

@@ -1,6 +1,10 @@
 ---
 name: google-ai-seo-fundamentals
-description: Google Search guidance for AI-assisted website content. Use when reviewing, writing, or governing generative AI content for SEO, including blog posts, marketplace listings, product descriptions, titles, meta descriptions, image alt text, structured data, and scaled content risks under Google's people-first content and spam policies.
+description: "Google Search guidance for AI-assisted website content. Use when reviewing, writing, or governing generative AI content for SEO, including blog posts, marketplace listings, product descriptions, titles, meta descriptions, image alt text, structured data, and scaled content risks under Google's people-first content and spam policies."
+license: MIT
+metadata:
+  author: Looties
+  version: "1.0.0"
 ---
 
 # Google AI SEO Fundamentals

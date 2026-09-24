@@ -1,6 +1,10 @@
 ---
 name: endpoint-surface-map
-description: Use when you need to know who can actually call each endpoint in a service, and prove it. Covers auditing the authorization surface of serverless functions (AWS Lambda, Cloudflare Workers, Vercel functions, Supabase edge functions, Cloud Run), HTTP route tables, webhook receivers, internal/cron workers and admin endpoints. Use when asked to "audit our endpoints", "who can call this", "find unauthenticated endpoints", "check for privilege escalation", "is this endpoint protected", "map the attack surface", when a platform auth flag (verify_jwt, IAM authorizer, API gateway authorizer) may have drifted from what the repository declares, or when a privileged handler acts on a target the caller names (confused deputy). Produces a versioned manifest and a CI gate, not a one-off report.
+description: "Use when you need to know who can actually call each endpoint in a service, and prove it. Covers auditing the authorization surface of serverless functions (AWS Lambda, Cloudflare Workers, Vercel functions, Supabase edge functions, Cloud Run), HTTP route tables, webhook receivers, internal/cron workers and admin endpoints. Use when asked to \"audit our endpoints\", \"who can call this\", \"find unauthenticated endpoints\", \"check for privilege escalation\", \"is this endpoint protected\", \"map the attack surface\", when a platform auth flag (verify_jwt, IAM authorizer, API gateway authorizer) may have drifted from what the repository declares, or when a privileged handler acts on a target the caller names (confused deputy). Produces a versioned manifest and a CI gate, not a one-off report."
+license: MIT
+metadata:
+  author: Looties
+  version: "1.0.0"
 ---
 
 # Endpoint Surface Map

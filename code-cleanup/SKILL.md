@@ -1,6 +1,10 @@
 ---
 name: code-cleanup
-description: Safe, behavior-preserving code cleanup and refactoring workflow for recently changed, staged, or user-selected code. Use when asked to clean up code before a commit, improve readability, simplify/refactor without changing behavior, apply project coding conventions, review staged diffs for maintainability issues, or organize small validation-backed cleanup batches.
+description: "Safe, behavior-preserving code cleanup and refactoring workflow for recently changed, staged, or user-selected code. Use when asked to clean up code before a commit, improve readability, simplify/refactor without changing behavior, apply project coding conventions, review staged diffs for maintainability issues, or organize small validation-backed cleanup batches."
+license: MIT
+metadata:
+  author: Looties
+  version: "1.0.0"
 ---
 
 # Code Cleanup

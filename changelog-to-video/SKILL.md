@@ -1,6 +1,10 @@
 ---
 name: changelog-to-video
-description: Use when turning a changelog, release notes, or a list of shipped features into a polished feature-showcase video (weekly changelog video, release recap, "what's new" reel, launch montage) and you want each feature shown as a REAL animated mock-up instead of a generic text card. Triggers include "our changelog videos all look like the same card", deduping overlapping entries, and rendering HTML/GSAP motion to MP4.
+description: "Use when turning a changelog, release notes, or a list of shipped features into a polished feature-showcase video (weekly changelog video, release recap, \"what's new\" reel, launch montage) and you want each feature shown as a REAL animated mock-up instead of a generic text card. Triggers include \"our changelog videos all look like the same card\", deduping overlapping entries, and rendering HTML/GSAP motion to MP4."
+license: MIT
+metadata:
+  author: Looties
+  version: "1.0.0"
 ---
 
 # Changelog to Video
