@@ -1,0 +1,23 @@
+{
+  "skill_name": "merge-time-ci-economics",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We blew through our GitHub Actions minutes again this month on our private repo. Figure out where the minutes are going and propose a CI setup that fits under 3000 min/month. Don't change the workflows yet.",
+      "expected_output": "Runs the read-only billed-minutes reconstruction (job durations rounded up per job) and reports minutes by workflow and event, by job and by branch; groups them by cause (push plus pull_request duplication, re-runs per push, long-lived release PR, informational jobs, one-minute minimums, rarely applicable heavy proofs); lists ruled-out hypotheses; checks the pre-commit hook; proposes a merge-time design with an estimate against the budget and the trade-offs. No workflow files modified.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "my agent opened a PR, gh pr checks is all green, but GitHub says merging is blocked and auto-merge never fires. CI only runs on ready_for_review. what's going on",
+      "expected_output": "Explains that a PR opened non-draft (or pushed to after being marked ready) has no required checks on its head commit because only ready_for_review starts CI, and that gh pr checks lists only checks that exist; gives the fix (gh pr ready --undo then gh pr ready, then re-arm gh pr merge --auto because returning to draft disarms it); warns that a workflow_dispatch run will not satisfy the PR's required checks and that --admin is not the fix.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "All our CI jobs started failing in like 3 seconds this morning, nobody touched the YAML. Also our docs freshness check turned main red over the weekend with zero commits. Can you sort out both?",
+      "expected_output": "Reads the check-run annotations before editing YAML and identifies a billing or spending-limit block as the likely cause, to be lifted by the account owner rather than in code; separately, demotes the calendar-dependent docs check to advisory (warnings or annotations, exit 0, optional strict mode) and removes it from required checks, explaining that a required check must be a function of the commit.",
+      "files": []
+    }
+  ]
+}

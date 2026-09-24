@@ -1,0 +1,23 @@
+{
+  "skill_name": "agentic-peer-review",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We merged about fifteen PRs this week, most of them written by coding agents, and CI was green on all of them but honestly nobody else read them. Can you do a proper peer review of everything that landed on main since the last release tag? Report only for now.",
+      "expected_output": "Fixes the cohort (PR list, deduplicated release merges, integration deltas) and a reference SHA; reads the check rollup of each merged SHA and flags any PR whose app jobs are missing or that merged before CI finished; runs isolated reviewers per domain (security/money, backend/data, frontend/a11y) with the shared output schema; coordinator dedupes by root cause and routes disagreements to reproduction; every ranked finding has a failing reproduction outside the product tree with its limits stated; writes a frozen audit record with per-PR verdicts. No product code changed.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Here's the audit from last week's review of the payments and notifications PRs. Fix the P1s and P2s, then get someone else to look at the fixes before we deploy. Tell me exactly what has to be deployed and in which order.",
+      "expected_output": "Leaves the audit record unchanged; fixes P1 then P2 test-first, promoting each reproduction into the suite red then green and reusing existing mechanisms (durable delivery log, shared deduction logic, accessible modal primitive) instead of copies; starts a fresh reviewer on the fix diff with only the audit record and the diff, and closes its findings with red/green tests; writes a separate hardening record; derives the deploy order (schema first, units shipping with it, every unit importing a changed shared helper including dynamic imports) and a post-deploy checklist (versions bumped, auth flags unchanged, unauthenticated probes 401/400).",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "before we cut the release can you get a couple of agents to independently review the feature/agent-sandbox branch? it's big, it touches the worker that calls the model with user photos plus some webhook handling. I don't trust that the 'read-only' sandbox setting actually means anything",
+      "expected_output": "Treats the branch as the cohort with a reference SHA; security reviewer tests the sandbox claim with a fake-secret canary outside the job directory and a negative control, stating the proof's limits (CLI version, no real model turn); backend reviewer checks webhook signature, replay and out-of-order events against terminal states; frontend reviewer only if the branch has UI; findings reproduced before ranking; budgets a second review round over the fix diff; points to legacy-code-review for untested legacy parts rather than repeating it.",
+      "files": []
+    }
+  ]
+}

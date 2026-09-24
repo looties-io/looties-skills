@@ -1,0 +1,4 @@
+interface:
+  display_name: "Postgres Privilege Audit"
+  short_description: "Find the columns and functions a client database role can really reach, and close them without breaking features."
+  default_prompt: "Use $postgres-privilege-audit on this database: build the privilege matrix from the live catalog per browser role, classify every column an owner-visible row exposes, trace each token column to its consumer and prove readability with a set-role probe, check default privileges and callers that run as the end user, then fix with column-list grants, dry-run in a transaction that aborts with its evidence, and pin the result with pgTAP and a catalog invariant."

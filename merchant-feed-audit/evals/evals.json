@@ -1,0 +1,23 @@
+{
+  "skill_name": "merchant-feed-audit",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Our Google Merchant feed passes validation and our CI smoke test checks it every deploy, but after two months none of our products show up in Shopping free listings. Can you figure out what's going on? Don't change anything in the account yet.",
+      "expected_output": "Reads the live account through Merchant API v1 before the runbook: lists data sources with their input type, checks whether the feed URL is registered as a FILE primary source, reads the latest fetch (state, time, itemsTotal), account issues and per-product destination statuses. Reports whether the feed is registered at all, whether autofeed or leftover UI sources are publishing instead, and the disapproval codes grouped by count. Proposes source changes as explicit, announced steps without performing them.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "We want to add t-shirts, hoodies, caps and enamel pins to our product feed. Right now it only has mugs and stickers. What do we need before we flip it on?",
+      "expected_output": "Walks the taxonomy path of each new category, notes that clothing, headwear and jewelry sit under Apparel & Accessories (166) where color, gender, age_group (and size for clothing) are required for free listings, names the source column for each attribute, refuses to derive color from description text, holds out items without a reviewed value via fail-closed columns or an exclusion table, checks shipping_weight against the account's shipping settings, and ends with a rolled-back production dry-run that asserts per-lane counts.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "trying to call the merchant api from a github action to monitor our products. using an api key i get 401, and when I switched to the v1beta products endpoint i get 409 V1BETA_RAMP_DOWN. how do I get this working",
+      "expected_output": "Explains that API keys are not accepted and a principal is required (OAuth user refresh token or service account), that v1beta is retired so v1 paths must be used, that the GCP project may need registering via developerRegistration:registerGcp (else GCP_NOT_REGISTERED), and that the Content API for Shopping is shut down. Provides the token exchange, then a read-only monitor that fails on account issues, no registered file source, stale or empty fetch, any disapproved product or zero approved, and fails loudly on a revoked credential.",
+      "files": []
+    }
+  ]
+}

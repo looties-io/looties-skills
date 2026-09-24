@@ -1,0 +1,23 @@
+{
+  "skill_name": "provider-canary",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We changed the shipping label payload so the seller's phone and home address are replaced by our warehouse address. The shipping API has no sandbox. Can you make sure the carrier actually accepts it before we release?",
+      "expected_output": "Counts (not rows) of the option codes production actually sends; a scratch script that imports the app's real payload builder and presets with fictional parties; a matrix of every used option code times recipient/sender field variations; assertions on the provider's parcel status rather than the HTTP code; same-day cancellation inside the free window with an independent readback of each cancelled or deleted object; an evidence file with ids, statuses and label PDF hashes and no credentials; a GO/NO-GO that names what was not exercised.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Before we write the refund rules for chargebacks: if a buyer disputes a card payment on a connected account and the seller loses, do we have to give back our platform fee? Docs don't say. We're on Stripe Connect with direct charges.",
+      "expected_output": "Refuses to assume; runs a test-mode measurement with a sk_test_ guard and livemode=false readback, a test connected account (account token if the platform country requires it), direct charges with the production application fee logic, one lost and one won dispute via test payment methods; reports application fee amount_refunded, connected balance movements and dispute fee, and event creation order (funds_reinstated can share a second with closed); saves the events as a replay fixture and lists what test mode does not model.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "the release review says it's blocked because the carrier rejected our payload with some volumetric weight error and their terms say returns go back to the drop-off point. is this a real blocker?",
+      "expected_output": "Re-runs the exact application payload canary instead of accepting a one-off error, checks the documented volumetric divisor, forbids dropping dimensions to make it pass (quote and invoice would diverge), verifies from production counts whether the failing option code is ever sent, and replaces the downstream carrier's consumer terms with the documentation of the broker actually contracted; ends with evidence and a re-scored blocker list.",
+      "files": []
+    }
+  ]
+}

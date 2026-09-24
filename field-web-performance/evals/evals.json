@@ -1,0 +1,23 @@
+{
+  "skill_name": "field-web-performance",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Our Lighthouse CI job keeps opening an issue saying mobile performance is 38 and LCP is 11 seconds on the home page. Can you go through the report and fix whatever it says so we get under the 6 second budget?",
+      "expected_output": "Labels the 11 s as simulated lab and pulls the observed LCP from the same report; sums the report's estimated savings against the gap to budget and states whether the budget is reachable at all; checks each finding against the harness (compression, placeholder keys, cache headers, host-only endpoints) before the product; asks for or checks field data (CrUX or RUM p75) and says 'unknown' if none exists; proposes only changes that meet the bar (visible defect, field evidence, provably unnecessary startup code) and does not promise a score.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I moved the image compression library to a dynamic import so it's out of the main bundle. Write up the before/after for the PR, the reviewer wants numbers. Weirdly Lighthouse says LCP got worse on the terms page.",
+      "expected_output": "Builds the exact base and head with the full production build, finds the entry chunk via index.html, reports raw/gzip/brotli bytes separately from scores, runs paired alternating Lighthouse runs with per-metric medians and ranges and every run retained, confirms the terms-page LCP movement with an applied-throttling CDP check before claiming a regression or gain, adds a build-graph guard plus a browser check that the chunk is not requested at startup, and makes no LCP claim the evidence does not support.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "marketing wants a slide saying we're faster than our three main competitors. we have a script that runs lighthouse on our site and theirs, can you make the comparison table",
+      "expected_output": "Audits the comparison conditions first (localhost vs CDN, compression, run counts, consent or country dialogs, equivalent page types, blocked or 403 responses) and refuses to rank sites measured under unequal conditions; proposes an equal protocol (same location, device, network, consent state, run count, screenshots) or CrUX field p75 by form factor where every site has a record; states plainly what can and cannot be claimed.",
+      "files": []
+    }
+  ]
+}

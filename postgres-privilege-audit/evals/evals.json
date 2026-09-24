@@ -1,0 +1,23 @@
+{
+  "skill_name": "postgres-privilege-audit",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We're on Supabase and the security advisor export has like 90 items. Can you triage it and tell me which ones actually matter? Don't change anything in prod.",
+      "expected_output": "Builds the privilege matrix from the live catalog (table and column grants, function EXECUTE, RLS, policies, view security_invoker) instead of trusting the export; classifies advisor items as intended (deny-all tables, guarded definer functions) or real; separately scans owner-visible rows for bearer or counterparty columns the advisor cannot see, proves any hit with a set-role probe in a rolled-back transaction reporting only token length; returns a triage table with evidence and a proposed fix order. No production writes.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Our password reset and invite flows store a token on the row and the edge function looks it up with .eq('token', token). A user can SELECT their own rows through RLS. Is that a problem? If so fix it.",
+      "expected_output": "Identifies the columns as bearer columns handed to the user they authorize against; proves readability as authenticated with the owner's jwt claims; lists every reader and writer of the tables and flags any hybrid client (service key plus caller Authorization header) or select('*') that the revoke would break; writes a migration that revokes all from anon and authenticated and re-grants display columns by name; dry-runs it in a transaction ending in RAISE EXCEPTION with probes both ways; adds pgTAP assertions and a no-token-column-granted invariant.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "review this migration before I merge: it adds a SECURITY DEFINER function get_member_status(uuid) with REVOKE ALL FROM PUBLIC, a new table for audit notes, and a public view over listings",
+      "expected_output": "Checks default privileges and explains that REVOKE FROM PUBLIC leaves named-role EXECUTE grants on platforms that set them, so the revoke must name anon and authenticated; checks the function pins the caller and sets search_path; states whether the new table is auto-granted or born without grants in production versus the CI replay and requires explicit grants (including for the backend role) plus RLS; recommends security_invoker for the view with base-table policy and column grants, proven by hashing its output as anon; proposes pgTAP assertions for each.",
+      "files": []
+    }
+  ]
+}

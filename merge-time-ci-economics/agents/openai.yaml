@@ -1,0 +1,4 @@
+interface:
+  display_name: "Merge-Time CI Economics"
+  short_description: "Reconstruct the Actions bill by cause and run CI once, at merge time."
+  default_prompt: "Use $merge-time-ci-economics on this repository: reconstruct billed minutes per workflow and event for the last 30 days, group them by cause, confirm the local pre-commit gate, then redesign the triggers so CI runs once when a draft pull request is marked ready, with required checks, auto-merge and a guard test."

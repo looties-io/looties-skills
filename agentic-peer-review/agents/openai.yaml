@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agentic Peer Review"
+  short_description: "Independent multi-agent review of recently merged changes, reproduced before ranked."
+  default_prompt: "Use $agentic-peer-review on the last ten merged pull requests: freeze the cohort and a reference SHA, check CI per merged SHA, run isolated reviewers per domain, reproduce every finding outside the product tree before ranking it, write the audit record before fixing, then have a fresh reviewer check the fix diff and verify the deployment."

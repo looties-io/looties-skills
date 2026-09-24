@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repo-Wide Dead Code Sweep"
+  short_description: "Find what can be deleted across a repo, with proof for each item and nothing dormant or broken removed."
+  default_prompt: "Use $repo-wide-dead-code-sweep on this repository: run the analyzer with export detection on, build a production-only import graph, compare against what is actually deployed, give every candidate a verdict and a four-part dossier (scope, origin commit, evidence nothing calls it, what covers it today), and propose removals as revertible micro-commits."

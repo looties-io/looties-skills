@@ -1,0 +1,4 @@
+interface:
+  display_name: "Merchant Feed Audit"
+  short_description: "Find out what Google actually ingested and fix Merchant Center disapprovals at the root."
+  default_prompt: "Use $merchant-feed-audit on this store: read the live Merchant Center account through the Merchant API first (data sources, last fetch, account issues, per-destination statuses), make the feed the single primary source, work disapprovals one reason code at a time, and leave a scheduled live-status check that fails when Google refuses something."

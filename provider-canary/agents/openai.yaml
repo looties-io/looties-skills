@@ -1,0 +1,4 @@
+interface:
+  display_name: "Provider Canary"
+  short_description: "Prove a provider integration with the app's exact payload, reversibly, before shipping or blocking it."
+  default_prompt: "Use $provider-canary on this integration change: count the option codes production really sends, write a throwaway script that imports the app's own payload builder, guard the mode, run the option-by-field matrix with fictional parties, judge by the provider's status field, cancel everything the same day and read the cleanup back, then write an evidence file with ids, final states and document hashes."

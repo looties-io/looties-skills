@@ -1,0 +1,4 @@
+interface:
+  display_name: "Field Web Performance"
+  short_description: "Let field data and traces, not simulated lab scores, decide web performance work."
+  default_prompt: "Use $field-web-performance on this red Lighthouse report: label every number as simulated, observed, applied-throttling or field, check whether the budget is reachable, rule out harness artifacts, find the real bottleneck in a trace, and only propose changes backed by a visible defect, field evidence or provably unnecessary startup code, with a paired before/after protocol."

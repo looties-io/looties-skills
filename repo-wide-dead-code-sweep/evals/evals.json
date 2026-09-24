@@ -1,0 +1,23 @@
+{
+  "skill_name": "repo-wide-dead-code-sweep",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Our repo has grown a lot and CI has knip with exports turned off. Can you do a full pass and tell me what we can delete? Don't delete anything yet, I want the list with reasons.",
+      "expected_output": "Runs knip with exports and types included plus a production-only graph with tests excluded as entries; separates 'export keyword only' hits from real candidates; checks analyzer ignore lists, feature flags and READMEs for dormant-by-design code; returns a table where each candidate has a verdict (dead, dormant, covered, gap, broken) and a four-part dossier with positive controls for empty searches. No files changed.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "We retired the gift card feature last quarter. Clean up everything it left behind: frontend, edge functions, SQL functions, translation keys, email templates.",
+      "expected_output": "Inventories the retired feature's surface from the repo and from the deployed catalog (functions list, pg_proc, scheduled jobs, provider templates); crosses SQL candidates against triggers, policies, cron, views, defaults, constraints, indexes and other function bodies; searches translation keys in literal, namespaced, last-segment, prefix and interpolated forms; deletes templates at the provider first then syncs; plans revertible micro-commits, a BEGIN/ROLLBACK production dry-run and an early full migration replay, and a deploy order that leaves no dangling reference.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "i found about 80 translation keys that grep says are unused. ok to just remove them from all our locale files?",
+      "expected_output": "Does not approve the removal on grep alone; re-checks each key for namespaced, last-segment, ancestor-prefix and numbered-interpolation consumers and for build scripts that serialize or hard-code keys; runs a positive control on the search; uses git log -S to find each key's last consumer to tell covered from broken; removes only the confirmed orphans from every locale in one commit and runs the locale parity check.",
+      "files": []
+    }
+  ]
+}
