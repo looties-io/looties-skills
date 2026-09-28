@@ -1,0 +1,23 @@
+{
+  "skill_name": "youtube-video-editing",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Everything for my next YouTube episode is in ~/Videos/ep12: four raw takes, the script, the thumbnail and some event clips. Cut the stutters and restarts, keep it natural, add an intro with the title and a jingle, captions, and use the left side of the frame for inserts.",
+      "expected_output": "An HDR-preserving edit (10-bit HLG master, graphics composited through a BT.2408 LUT, HEVC Main10 HLG output), with a phrase EDL, cut boundaries verified by re-transcription, an .srt, YouTube chapters, and a report listing what was verified and what must be checked by ear.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Feedback on v1: the image looks warmer and lower quality than my rushes. At 1:22 and 4:01 you cut on my breath and I look down before the chapter card, which is too short to read. At 5:01 you cut me off before I finish the numbers.",
+      "expected_output": "Removes the SDR conversion from the pipeline instead of tweaking it, moves the segment ends before the inhale and gaze drop, gives chapter cards about 1.7 s of readable hold, extends the numbers segment to the true voiced offset, reruns head-down detection over the whole master, and answers each note in order.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Now make me a 30-second vertical version for Instagram with only the juiciest moments, plus a caption for the post.",
+      "expected_output": "A 1080x1920 short cut from the clean HDR master with face-tracked crops, 2-3-word karaoke captions inside the Reels safe zone, the cover as the first frame, an end card pointing to the full video, a 9:16 cover PNG and an Instagram caption.",
+      "files": []
+    }
+  ]
+}
