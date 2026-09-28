@@ -32,4 +32,7 @@ misbehaves once wired to its dependencies.
 
 - `SKILL.md` — the workflow the agent loads.
 - `references/checklist.md` — a pre-flight checklist for a new harness test.
+- `references/provider-recovery.md` — provider recovery and database evidence for payment, refund and label handlers.
+
+A project that vendors this skill can add its own `references/project.md` (real toolkit names, known pitfalls, commands); `SKILL.md` tells the agent to read it first when it exists.
 - `agents/openai.yaml` — Codex/OpenAI interface metadata.
