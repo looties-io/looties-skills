@@ -4,7 +4,7 @@ description: "Safe, behavior-preserving code cleanup and refactoring workflow fo
 license: MIT
 metadata:
   author: Looties
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Code Cleanup
@@ -58,6 +58,19 @@ State the selected scope briefly before editing when it affects risk or validati
 6. **Report**
    - Summarize what changed, what was intentionally left alone, and which validation commands ran.
    - Mention any bugs or follow-up cleanup candidates that were not addressed.
+
+## Structural quality before style
+
+Use these questions on the changed behavior before creating another abstraction:
+
+- Identify the existing owner of each business rule and trace its actual callers. Search for semantic duplicates and unfinished migrations, not only identical lines. Reuse that owner; do not create a parallel service, validator, retry loop or source of truth.
+- Trace the blast radius through direct and dynamic consumers, persistence, configuration and deployment units. Verify the affected boundary rather than merely the edited helper.
+- Remove dead code only with evidence from entrypoints, dynamic registration, public exports, generated references and external consumers. Static analyzer output alone is a lead.
+- Reject speculative adapters, one-use wrappers, redundant validation and broad exception handling that hides failures. Keep validation at real trust boundaries; a fallback must preserve the explicit contract and expose failure.
+- Derive expected behavior from requirements and contracts. A test that reproduces the implementation's mistake is not a regression check. For a confirmed defect, show the check failing before the fix and passing afterwards.
+- Report the canonical owner, affected consumers, verified simplification and remaining uncertainty. Fewer lines alone are not evidence of better behavior.
+
+For an entire cohort, use `agentic-peer-review`; for recurring structural defects, use `impossible-by-design`. Keep this pass proportional to the actual change.
 
 ## Transformation Guide
 

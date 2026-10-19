@@ -26,6 +26,7 @@ These are skills we actually use to build Looties. Each skill is a self-containe
 | [postgres-privilege-audit](./postgres-privilege-audit/) | Audit who can read which columns and execute which functions in Postgres/Supabase/PostgREST from the live catalog, catch credential columns RLS hands to their own subject, prove revokes in an aborting dry run |
 | [provider-canary](./provider-canary/) | Before shipping a change that sends real payloads to a carrier, payment or payout provider: a canary that reuses the app's own payload builder, asserts test mode, judges the provider status field and cleans up the same day |
 | [repo-wide-dead-code-sweep](./repo-wide-dead-code-sweep/) | Repo-wide hunt for unused exports, files, functions, SQL routines and i18n keys with evidence per candidate, dormant-by-design checks and revertible micro-commits |
+| [security-hardening](./security-hardening/) | Execute an isolated security matrix and carry confirmed findings through authorized fixes and verification |
 | [website-ai-agent-readiness](./website-ai-agent-readiness/) | Website readiness for AI agents, answer engines, and machine-readable assets |
 | [youtube-video-editing](./youtube-video-editing/) | Edit raw talking-head takes into a YouTube episode, a 9:16 short and launch posts: cuts on the voice attack and never on a breath or lowered gaze, phone HDR kept intact end to end, every boundary verified by re-transcription |
 
@@ -52,6 +53,7 @@ npx skills@latest add looties-io/looties-skills --skill merge-time-ci-economics
 npx skills@latest add looties-io/looties-skills --skill postgres-privilege-audit
 npx skills@latest add looties-io/looties-skills --skill provider-canary
 npx skills@latest add looties-io/looties-skills --skill repo-wide-dead-code-sweep
+npx skills@latest add looties-io/looties-skills --skill security-hardening
 npx skills@latest add looties-io/looties-skills --skill website-ai-agent-readiness
 npx skills@latest add looties-io/looties-skills --skill youtube-video-editing
 ```

@@ -4,7 +4,7 @@ description: "Use when the same class of bug keeps coming back, when a fix would
 license: MIT
 metadata:
   author: Looties
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Impossible by Design
@@ -38,6 +38,10 @@ The bar to clear: **a new contributor, or an agent with no context, tries the wr
 make it work.**
 
 ## The ladder
+
+Before choosing a mechanism, search recent fixes, reviews, reversions and decision records for the same failure class. Group by violated invariant rather than symptom or file. If two fixes relying on the same premise fail the same check, stop patching the symptom: state the premise, design a discriminating experiment, and revise it from the observed result.
+
+After adding a constraint, replay one historical counterexample and one legitimate neighboring case. The former must be rejected and the latter must still work. Prefer the existing canonical owner, API/type shape, then a targeted static or behavioral check; add an instruction only where stronger enforcement is disproportionate. Link the evidence to the existing decision record, superseding a prior decision explicitly rather than creating a competing memory system.
 
 Every rule sits somewhere on this ladder. The work is to move it up until the cost of climbing
 exceeds the cost of the bug.

@@ -4,7 +4,7 @@ description: "Use when a batch of already-merged changes needs an independent se
 license: MIT
 metadata:
   author: Looties
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Agentic Peer Review
@@ -50,6 +50,10 @@ Every reproduction in this skill obeys it; read it there rather than here.
 
 Ten steps, in order. The order matters: ranking before reproduction, or fixing before the audit
 record exists, destroys the evidence you need later.
+
+Apply this order per independent domain or finding. Once its pre-fix evidence is frozen, begin the authorized remediation while other domains continue assessment. An approval needed for one migration, production action or policy change blocks only that action and its dependents. Keep the finding owner, next action and approval reference visible; do not suspend the whole campaign at the report stage.
+
+For scheduled hardening, the harness owns the trigger, cohort and durable receipts; this skill owns the review method. Use the complete cohort since the last successful assessment (default policy: 50 merged code PRs or seven active coding days). Read PR intent, review threads, reverts, incidents and existing decisions alongside the integrated tree. Ask which individually reasonable changes create duplicate ownership, incompatible assumptions or broken cross-repository contracts together. New changes remain in the next cohort.
 
 ### Step 1: freeze the cohort and a reference SHA
 
@@ -152,8 +156,8 @@ no scanner output at all.
 
 Every surviving claim becomes a reproduction **outside the product tree**: a failing test in a
 temporary directory, a copy of the existing test harness, a browser run against the real component,
-a canary with fake secrets, a rolled-back transaction. Nothing is added to the product while the
-audit is open.
+a canary with fake secrets, a rolled-back transaction. Preserve that domain's baseline before adding
+its regression test and fix to the product; unrelated audit work may remain open.
 
 Rules:
 
