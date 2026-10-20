@@ -4,7 +4,7 @@ description: "Use when writing, designing, or strengthening harness tests: tests
 license: MIT
 metadata:
   author: Looties
-  version: "1.1.0"
+  version: "1.2.0"
 ---
 
 # Harness Testing
@@ -106,9 +106,11 @@ try {
 3. **Seed lazily, tear down completely.** Read seeded data at execution time so tests arrange before
    acting. One `restore()` reverts every global you touched (network, entrypoint, env, timers) in
    reverse order; call it in `finally`. Cross-test leakage is the #1 harness failure mode.
-4. **Pin actual behavior, not assumed behavior.** The first boot will surprise you; that's the point.
-   Assert what the code *does* (the real status code, the real error text), record the surprise, and
-   don't quietly "fix" production to match your assumption.
+4. **Derive assertions from the contract.** Establish expected behavior from requirements, protocol
+   contracts or independently verified examples before reading the implementation's result.
+   Record surprising observations separately as characterization evidence; do not turn a defect
+   into the expected outcome merely because the current code produces it. Fix confirmed defects
+   within the authorized scope and preserve a failing-before/passing-after reproduction.
 5. **Keep the fake minimal; extend on demand.** Emulate only the verbs the unit uses. A smaller fake
    is easier to trust. Add a verb deliberately when a test needs it; never loosen matching to pass.
 6. **Own only what you can clean up.** Real clients start background work (refresh timers, pools) the
