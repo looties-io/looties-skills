@@ -1,0 +1,29 @@
+{
+  "skill_name": "french-accounting",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "J'ai 40 lignes bancaires sans justificatif dans mon logiciel compta, dont plein de petits intérêts quotidiens de mon compte de trésorerie, deux virements entre mes comptes, un abonnement logiciel américain payé en dollars et une facture d'un fournisseur français à 240 EUR. Qu'est-ce que je dois vraiment aller chercher ?",
+      "expected_output": "Range chaque ligne : intérêts et virements internes en « sans facture attendue », justificatif (relevé) conservé (virements trouvés par même jour, montants égaux et opposés sur deux comptes de la société, passés par 58) ; ne classe pas l'abonnement en dollars en « à suivre » au seul motif de la devise : vérifie l'adresse de l'entité qui facture et si l'autoliquidation est constatée et déclarée ; classe le fournisseur français à 240 EUR en « critique » car la TVA ne se déduit pas sans facture ; cite le PCG 1032-1 et 1214-44 ; propose des comptes lus dans le PCG local et demande à l'expert-comptable de les confirmer au lieu de comptabiliser.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Mon versement Stripe de 87,30 EUR est arrivé en banque ce mois-ci. Je peux le passer en chiffre d'affaires ?",
+      "expected_output": "Refuse de passer le versement en chiffre d'affaires : c'est un montant net. Demande d'abord le modèle économique (vente pour son compte, commissions, abonnement). Reconstitue le mois depuis l'API du prestataire avec une clé en lecture seule (montants bruts, frais, remboursements, éventuel rechargement depuis la banque de la société), calcule la TVA collectée sur le brut, propose une OD de fin de mois (411 prestataire, 706 ou 7082 selon la qualification validée, 44571 TVA, 627 frais, 58 pour les rechargements), rapproche au centime avec la ligne bancaire avant toute écriture, et laisse le choix des comptes à la convention de l'expert-comptable.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Mets en place un agent qui lit mes factures dans Gmail, les saisit dans mon logiciel comptable et écrit à mon expert-comptable quand il a une question.",
+      "expected_output": "Suit references/onboarding.md : démarre en phase 0 (recensement en lecture seule, essais à blanc, aucun mail), deux accès mail distincts en lecture seule et en envoi seul, trois canaux sans destinataire par défaut avec un délai minimal entre deux envois imposé dans l'unique fonction d'envoi, surveillance des réponses sur adresses exactes et fils ouverts par l'agent seulement, journal en ajout seul, registres des conventions et des décisions, avertissement IA sur chaque mail, saisie seulement sous convention avec un mail de contrôle groupé, et rappel qu'il s'agit de la comptabilité du dirigeant lui-même, sous un expert-comptable.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Quelle TVA pour une facture d'un SaaS dont la facture vient d'Irlande, et une autre d'une boîte américaine qui me facture de la TVA ?",
+      "expected_output": "Rappelle que la nature de l'opération et sa territorialité décident, puis, pour ces prestations de services entre assujettis, lit l'adresse de l'entité qui facture sur la facture, pas sur le libellé bancaire ; l'Irlande relève de l'autoliquidation intracommunautaire (pas de TVA sur la facture, TVA due et déductible du même montant) ; la TVA étrangère de la facture américaine n'est jamais de la TVA déductible française et la TVA française est en général due par autoliquidation, à constater selon la convention de l'expert-comptable ; ne cite aucun taux de mémoire et propose de consigner la réponse en convention.",
+      "files": []
+    }
+  ]
+}

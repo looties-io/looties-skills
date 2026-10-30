@@ -15,6 +15,7 @@ These are skills we actually use to build Looties. Each skill is a self-containe
 | [code-cleanup](./code-cleanup/) | Safe, behavior-preserving code cleanup for staged or recently changed files |
 | [endpoint-surface-map](./endpoint-surface-map/) | Know who can actually call each endpoint: a manifest of caller, credential and authority, a CI gate that fails on undeclared routes, and a live check for deployed config drift |
 | [field-web-performance](./field-web-performance/) | Treat a red Lighthouse score as a thermometer, not a backlog: separate simulated lab, observed lab, throttled lab and field data, triage the harness first, and ship only measured wins |
+| [french-accounting](./french-accounting/) | Tenir la comptabilité d'une société française selon le PCG avec un agent qui lit chaque compte dans le texte officiel, demande une fois à l'expert-comptable et consigne sa réponse en convention, et gagne ses droits d'écriture par phases sous un récapitulatif de contrôle groupé (en français) |
 | [google-ai-seo-fundamentals](./google-ai-seo-fundamentals/) | Google Search guidance for safe, people-first AI-assisted content |
 | [google-ai-seo-optimization](./google-ai-seo-optimization/) | Google-specific SEO workflow for AI Overviews and AI Mode readiness |
 | [ground-truth](./ground-truth/) | Confirm a finding against the running system before acting on it: is it happening, since when, how far it reaches, and why a scheduler that reports success proves nothing |
@@ -42,6 +43,7 @@ npx skills@latest add looties-io/looties-skills --skill cinematic-hyperframes
 npx skills@latest add looties-io/looties-skills --skill code-cleanup
 npx skills@latest add looties-io/looties-skills --skill endpoint-surface-map
 npx skills@latest add looties-io/looties-skills --skill field-web-performance
+npx skills@latest add looties-io/looties-skills --skill french-accounting
 npx skills@latest add looties-io/looties-skills --skill google-ai-seo-fundamentals
 npx skills@latest add looties-io/looties-skills --skill google-ai-seo-optimization
 npx skills@latest add looties-io/looties-skills --skill ground-truth
@@ -99,4 +101,4 @@ Looties is the marketplace where developer culture meets resale. Browse rare con
 
 ## License
 
-MIT
+MIT, except the text of [french-accounting](./french-accounting/) (SKILL.md, README.md and `references/`), which is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); its script stays MIT.
