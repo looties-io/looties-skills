@@ -1,0 +1,4 @@
+interface:
+  display_name: "Comptabilité française (PCG)"
+  short_description: "Tenir la comptabilité d'une société française selon le PCG, sous le contrôle d'un expert-comptable."
+  default_prompt: "Utilise $french-accounting pour qualifier ces lignes bancaires : range chacune dans sa catégorie, gradue les pièces manquantes selon la TVA en jeu, lis chaque compte proposé dans le PCG local, n'applique que les conventions consignées, et rédige des questions pour l'expert-comptable pour tout le reste."
